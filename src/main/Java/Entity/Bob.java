@@ -14,14 +14,14 @@ public class Bob {
 
     public Bob() {
         this.name = "Bob";
-        this.publicKey = new BigInteger("28763302913765661132800185637");
-        this.modulus = new BigInteger("71994651332404115788173195239");
+        this.publicKey = new BigInteger("32289489153281417294049366139");
+        this.modulus = new BigInteger("50074083286257101883487656271");
     }
 
     public Bob(BigInteger privateKey, BigInteger p, BigInteger q, BigInteger r) {
         this.name = "Bob";
-        this.publicKey = new BigInteger("28763302913765661132800185637");
-        this.modulus = new BigInteger("71994651332404115788173195239");
+        this.publicKey = new BigInteger("32289489153281417294049366139");
+        this.modulus = new BigInteger("50074083286257101883487656271");
         this.privateKey = privateKey;
         this.p = p;
         this.q = q;

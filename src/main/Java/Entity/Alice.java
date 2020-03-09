@@ -14,14 +14,14 @@ public class Alice {
 
     public Alice() {
         this.name = "Alice";
-        this.publicKey = new BigInteger("38933338385103628492607145193");
-        this.modulus = new BigInteger("66056083785421544972111685239");
+        this.publicKey = new BigInteger("23942147910524820274037347579");
+        this.modulus = new BigInteger("70866393920932815076821817727");
     }
 
     public Alice(BigInteger privateKey, BigInteger p, BigInteger q, BigInteger r) {
         this.name = "Alice";
-        this.publicKey = new BigInteger("38933338385103628492607145193");
-        this.modulus = new BigInteger("66056083785421544972111685239");
+        this.publicKey = new BigInteger("23942147910524820274037347579");
+        this.modulus = new BigInteger("70866393920932815076821817727");
         this.privateKey = privateKey;
         this.p = p;
         this.q = q;
