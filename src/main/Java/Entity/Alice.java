@@ -93,4 +93,17 @@ public class Alice {
     public void setModulus(BigInteger modulus) {
         this.modulus = modulus;
     }
+
+    @Override
+    public String toString() {
+        return "Alice{" +
+                "name='" + name + '\'' +
+                ", publicKey=" + publicKey +
+                ", privateKey=" + privateKey +
+                ", modulus=" + modulus +
+                ", p=" + p +
+                ", q=" + q +
+                ", r=" + r +
+                '}';
+    }
 }
