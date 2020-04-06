@@ -30,12 +30,12 @@ public class MainApplication {
         bob.setQ(q);
         bob.setR(p.subtract(one).multiply
                 (q.subtract(one))); // r = (p-1)*(q-1)
-        bob.setPrivateKey(StringUtils.findInverse(bob.getPublicKey(),bob.getR())); // e(publicKey) * d(privateKey) = 1 mod r
+        bob.setPrivateKey(bob.getPublicKey().modInverse(bob.getR()));
 
         // Factorisation - Alice
         BigInteger modulusAlice = alice.getModulus();
         BigInteger pAlice = StringUtils.findDivisors(modulusAlice);
-        BigInteger qAlice = modulus.divide(pAlice);
+        BigInteger qAlice = modulusAlice.divide(pAlice);
         System.out.println("another divisior is: " + qAlice);
 
         // PrivateKey computation - Alice
@@ -43,11 +43,13 @@ public class MainApplication {
         alice.setQ(qAlice);
         alice.setR(pAlice.subtract(one).multiply
                 (qAlice.subtract(one))); // r = (p-1)*(q-1)
-        alice.setPrivateKey(StringUtils.findInverse(alice.getPublicKey(),alice.getR())); // e(publicKey) * d(privateKey) = 1 mod r
+        alice.setPrivateKey(alice.getPublicKey().modInverse(alice.getR()));
 
         // Decrypt the cipherText
-        BigInteger encodedPlainText = encodedCipherText.modPow(bob.getPrivateKey(), bob.getModulus());
+        BigInteger signature = encodedCipherText.modPow(alice.getPublicKey(), alice.getModulus()); // To get the signature of Alice
+        BigInteger encodedPlainText = signature.modPow(bob.getPrivateKey(), bob.getModulus()); // To get the plaintext that sent by Alice
         String plainText = StringUtils.decode(encodedPlainText);
+
 
         // write to Json file
         Output output = new Output("170281490", "Bao  Han", alice, bob, plainText, cipherText);
@@ -57,6 +59,5 @@ public class MainApplication {
         gson.toJson(output, filepath);
         filepath.flush();
         filepath.close();
-
     }
 }

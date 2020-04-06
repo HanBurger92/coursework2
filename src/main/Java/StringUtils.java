@@ -2,7 +2,7 @@ import java.math.BigInteger;
 
 public class StringUtils {
 
-    public static BigInteger encode(String text){
+    public static BigInteger encode(final String text){
         return new BigInteger(text, Character.MAX_RADIX);
     }
 
